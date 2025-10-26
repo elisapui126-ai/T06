@@ -12,7 +12,11 @@ console.log(data);
 
 // Call functions after data is loaded
 drawHistogram(data);
+drawScatterplot(data);
 populateFilters(data);
+
+createTooltip(data);
+handleMouseEvents();
 
 }).catch(error => {
 console.error("Error loading the CSV file:", error);

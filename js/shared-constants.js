@@ -5,6 +5,10 @@ const height = 400; // Total height of the chart
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
+let innerChartS;
+const tooltipWidth = 65;
+const tooltipHeight = 32;
+
 /* Make the colours accessible globally */
 const barColor = "#606464";
 const bodyBackgroundColor = "#fffaf0";
@@ -12,6 +16,9 @@ const bodyBackgroundColor = "#fffaf0";
 // set up the scales
 const xScale = d3.scaleLinear();
 const yScale = d3.scaleLinear();
+const xScales = d3.scaleLinear();
+const yScales = d3.scaleLinear();
+const colorScale = d3.scaleOrdinal()
 
 // Create a bin generator using d3.bin
 const binGenerator = d3.bin()
@@ -24,3 +31,8 @@ const binGenerator = d3.bin()
         { id: "LCD", label: "LCD", isActive: false },
         { id: "OLED", label: "OLED", isActive: false }
     ];
+
+// Define unique screen technologies array based on filter options
+const uniqueTechs = filters_screen
+    .filter(filter => filter.id !== "all")
+    .map(filter => filter.id);
