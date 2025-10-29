@@ -11,7 +11,7 @@ const drawScatterplot = (data) => {
 
     // Set up x and y scales using data extents
     const xExtent = d3.extent(data, d => d.star);
-    const yExtent = d3.extent(data, d => d.screenSize);
+    const yExtent = d3.extent(data, d => d.energyConsumption);
 
     const xScaleS = d3.scaleLinear()
         .domain([xExtent[0] - 0.5, xExtent[1] + 0.5])
@@ -30,7 +30,7 @@ const drawScatterplot = (data) => {
         .data(data)
         .join("circle")
         .attr("cx", d => xScaleS(d.star))
-        .attr("cy", d => yScaleS(d.screenSize))
+        .attr("cy", d => yScaleS(d.energyConsumption))
         .attr("r", 4)
         .attr("fill", d => colorScale(d.screenTech))
         .attr("opacity", 0.5);
@@ -53,7 +53,7 @@ const drawScatterplot = (data) => {
         .call(leftAxis);
 
     svg.append("text")
-        .text("Screen size (inches)")
+        .text("Labelled Energy Consumption (kWh/year)")
         .attr("x", 30)
         .attr("y", 20)
         .attr("class", "axis-label");

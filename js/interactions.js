@@ -73,7 +73,7 @@ const handleMouseEvents = () => {
         console.log("Mouse entered circle", d);
 
     d3.select(".tooltip text") 
-    .text(d.screenSize); // Update the text in the tooltip with the screenTech value
+    .text(d.energyConsumption); // Update the text in the tooltip with the screenTech value
 
     const cx = e.target.getAttribute("cx");
     const cy = e.target.getAttribute("cy");
